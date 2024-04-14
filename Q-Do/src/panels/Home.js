@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Panel, PanelHeader, Header, Button, Group, Cell, Div, Avatar,Tabs,TabsItem,Text } from '@vkontakte/vkui';
-import {Icon12Articles, Icon28ArticlesOutline} from "@vkontakte/icons";
+import { Panel, PanelHeader, Header, Button, Group, Cell, Div, Avatar,Tabs,TabsItem,Text,Spacing  } from '@vkontakte/vkui';
+import {Icon12Articles, Icon20ListPlusOutline, Icon28ArticlesOutline} from "@vkontakte/icons";
 
 const Home = ({ id, go, fetchedUser }) => (
 	<Panel id={id}>
@@ -24,17 +24,22 @@ const Home = ({ id, go, fetchedUser }) => (
 			</TabsItem>
 		</Tabs>
 		<Div style={{
+			height: "80vh",
 			display:"flex",
 			alignItems: "center",
-			flexDirection: "column"
+			flexDirection: "column",
+			justifyContent: "center"
 
 		}}>
 
-			<Icon12Articles width={58} height={46} color={"#2688EB"}/>
+			<Icon20ListPlusOutline width={58} height={46} color={"#2688EB"}/>
+			<Spacing size={10} />
+
 			<Text  style={{
 				fontSize:"20px",
 				weight:"500"
 			}}>У Вас нет заметок</Text>
+			<Spacing size={32} />
 			<Button size={'l'}>
 				<Text weight={'1'}   style={{
 				fontSize:"14px",
