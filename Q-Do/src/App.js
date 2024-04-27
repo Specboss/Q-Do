@@ -1,45 +1,61 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import bridge from '@vkontakte/vk-bridge';
-import { View, ScreenSpinner, AdaptivityProvider, AppRoot, ConfigProvider, SplitLayout, SplitCol } from '@vkontakte/vkui';
+import {View, ScreenSpinner, AdaptivityProvider, AppRoot, ConfigProvider,Div} from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
+import classes from "./style/tabsBottom.module.css"
 
 import Home from './panels/Home';
 import Persik from './panels/Persik';
+import {Icon16FolderOutline, Icon16ListBulletOutline,Icon20UserCircleOutline} from "@vkontakte/icons";
 
 const App = () => {
-	const [activePanel, setActivePanel] = useState('home');
-	const [fetchedUser, setUser] = useState(null);
-	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
+    const [activePanel, setActivePanel] = useState('home');
+    const [fetchedUser, setUser] = useState(null);
+    const [popout, setPopout] = useState(<ScreenSpinner size='large'/>);
 
-	useEffect(() => {
-		async function fetchData() {
-			const user = await bridge.send('VKWebAppGetUserInfo');
-			setUser(user);
-			setPopout(null);
-		}
-		fetchData();
-	}, []);
+    useEffect(() => {
+        async function fetchData() {
+            const user = await bridge.send('VKWebAppGetUserInfo');
+            console.log(window.location.href)
+            setUser(user);
+            setPopout(null);
+        }
 
-	const go = e => {
-		setActivePanel(e.currentTarget.dataset.to);
-	};
+        fetchData();
+    }, []);
 
-	return (
-		<ConfigProvider>
-			<AdaptivityProvider>
-				<AppRoot>
-					<SplitLayout popout={popout}>
-						<SplitCol>
-							<View activePanel={activePanel}>
-								<Home id='home' fetchedUser={fetchedUser} go={go} />
-								<Persik id='persik' go={go} />
-							</View>
-						</SplitCol>
-					</SplitLayout>
-				</AppRoot>
-			</AdaptivityProvider>
-		</ConfigProvider>
-	);
+    const go = e => {
+        setActivePanel(e.currentTarget.dataset.to);
+    };
+
+    return (
+        <ConfigProvider>
+            <AdaptivityProvider>
+                <AppRoot>
+                    <View activePanel={activePanel}>
+                        <Home id='home' go={go}/>
+                        <Persik id='persik' go={go}/>
+
+                    </View>
+                    <Div className={classes.tabsBottom}>
+                    <Div className={classes.tabsBottomVisible}>
+                        <Div  onClick={go} data-to="home" >
+                            <Icon16ListBulletOutline width={30} height={30} color={activePanel ==="home" ? "#F2F2F2": "#545454"}/>
+                        </Div>
+                        <Div  onClick={go} data-to="persik">
+                            <Icon16FolderOutline width={30} height={30} color={activePanel ==="persik" ? "#F2F2F2": "#545454"}/>
+                        </Div>
+                        <Div  onClick={go} data-to="profile">
+                            <Icon20UserCircleOutline width={30} height={30} color={activePanel ==="profile" ? "#F2F2F2": "#545454"}/>
+                        </Div>
+                    </Div>
+                    </Div>
+
+
+                </AppRoot>
+            </AdaptivityProvider>
+        </ConfigProvider>
+    );
 }
 
 export default App;
