@@ -27,7 +27,7 @@ const App = () => {
     const go = e => {
         setActivePanel(e.currentTarget.dataset.to);
     };
-
+    console.log(window.location.href)
     return (
         <ConfigProvider>
             <AdaptivityProvider>

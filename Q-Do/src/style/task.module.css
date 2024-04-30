@@ -1,0 +1,41 @@
+.task{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.taskText{
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 80vw;
+    font-size: 15px;
+    color: #969A9F;
+}
+
+.taskTitle{
+    font-size: 20px;
+    color: #E1E3E6;
+    font-weight: bold;
+
+}
+.taskTop{
+
+    background-color: #2D2D2E;
+    border-radius: 15px;
+    padding: 4vw;
+}
+
+.taskButtons{
+    display: flex;
+    justify-content: space-between;
+    width: 88vw;
+    padding: 0;
+
+}
+
+.taskButton{
+    width: 10px !important;
+    height: 10px !important;
+}

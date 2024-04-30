@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Panel, PanelHeader, Header, Button, Group, Cell, Div, Avatar,Tabs,TabsItem,Text,Spacing, View, Input, FormItem,IconButton,FormStatus ,Textarea } from '@vkontakte/vkui';
 import {Icon12Articles, Icon20ListPlusOutline, Icon28ArticlesOutline,Icon16CheckDoubleOutline} from "@vkontakte/icons";
+import Task from "../components/Task";
 
 const Home = ({ id, go }) =>{
 
@@ -12,6 +13,7 @@ const Home = ({ id, go }) =>{
 	const [textareaText,setTextareaText] = useState('')
 
 	return(
+
 	<Panel id={id}>
 		<PanelHeader>Q-Do</PanelHeader>
 		<Tabs>
@@ -37,31 +39,38 @@ const Home = ({ id, go }) =>{
 		</Tabs>
 
 		{selected === 'list' &&(
-			<Div  style={{
-			height: "80vh",
-			display:"flex",
-			alignItems: "center",
-			flexDirection: "column",
-			justifyContent: "center"
-
-		}}>
-
-			<Icon20ListPlusOutline width={58} height={46} color={"#2688EB"}/>
-			<Spacing size={10} />
-
-			<Text  style={{
-				fontSize:"20px",
-				weight:"500"
-			}}>У Вас нет заметок</Text>
-			<Spacing size={32} />
-			<Button size={'l'}>
-				<Text weight={'1'}   style={{
-				fontSize:"14px",
-
-
-			}}>Добавить</Text>
-			</Button>
-		</Div>)}
+			<>
+			<Task></Task>
+				<Task></Task>
+				<Task></Task>
+				<Task></Task>
+			</>
+		// 	<Div  style={{
+		// 	height: "80vh",
+		// 	display:"flex",
+		// 	alignItems: "center",
+		// 	flexDirection: "column",
+		// 	justifyContent: "center"
+		//
+		// }}>
+		//
+		// 	<Icon20ListPlusOutline width={58} height={46} color={"#2688EB"}/>
+		// 	<Spacing size={10} />
+		//
+		// 	<Text  style={{
+		// 		fontSize:"20px",
+		// 		weight:"500"
+		// 	}}>У Вас нет заметок</Text>
+		// 	<Spacing size={32} />
+		// 	<Button size={'l'}>
+		// 		<Text weight={'1'}   style={{
+		// 		fontSize:"14px",
+		//
+		//
+		// 	}}>Добавить</Text>
+		// 	</Button>
+		// </Div>
+			)}
 		{selected === 'create' &&(
 
 
