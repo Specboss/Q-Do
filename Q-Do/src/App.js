@@ -7,17 +7,18 @@ import classes from "./style/tabsBottom.module.css"
 import Home from './panels/Home';
 import Persik from './panels/Persik';
 import {Icon16FolderOutline, Icon16ListBulletOutline,Icon20UserCircleOutline} from "@vkontakte/icons";
+import axios from "axios";
 
 const App = () => {
     const [activePanel, setActivePanel] = useState('home');
-    const [fetchedUser, setUser] = useState(null);
     const [popout, setPopout] = useState(<ScreenSpinner size='large'/>);
 
     useEffect(() => {
         async function fetchData() {
-            const user = await bridge.send('VKWebAppGetUserInfo');
-            console.log(window.location.href)
-            setUser(user);
+            const token = await axios.post("http://localhost:3000/auth/login",{
+                url: window.location.href
+            });
+            localStorage.setItem("token",token.data);
             setPopout(null);
         }
 

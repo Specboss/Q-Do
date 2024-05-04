@@ -1,21 +1,19 @@
-import {Cell, Checkbox, Text,Div,Textarea,ButtonGroup,Button,Spacing} from "@vkontakte/vkui";
+import { Text,Div,Button,Spacing} from "@vkontakte/vkui";
 import React,{useRef, useState} from 'react';
-import bridge from "@vkontakte/vk-bridge";
 import classes from "../style/task.module.css"
 import {Icon20ArrowRightOutline, Icon20CheckCircleOutline} from "@vkontakte/icons";
-const Task = () => {
+const Task = ({task}) => {
+
 
 
 
     return(
 
   <Div className={classes.task}>
-
-
   <Div className={classes.taskTop}>
-    <Text  className={classes.taskTitle}>Learn js</Text>
+    <Text  className={classes.taskTitle}>{task.title}</Text>
     <Spacing size={10} />
-    <Text className={classes.taskText}>LoremdsffffffffdsfdsfdsfdsdfsgdfgdfgdfsgdfsgdfgdfgfddffgfdfdgLoremdsffffffffdsfdsfdsfdsdfsgdfgdfgdfsgdfsgdfgdfgfddffgfdfdgLoremdsffffffffdsfdsfdsfdsdfsgdfgdfgdfsgdfsgdfgdfgfddffgfdfdgLoremdsffffffffdsfdsfdsfdsdfsgdfgdfgdfsgdfsgdfgdfgfddffgfdfdgLoremdsffffffffdsfdsfdsfdsdfsgdfgdfgdfsgdfsgdfgdfgfddffgfdfdgLoremdsffffffffdsfdsfdsfdsdfsgdfgdfgdfsgdfsgdfgdfgfddffgfdfdgLoremdsffffffffdsfdsfdsfdsdfsgdfgdfgdfsgdfsgdfgdfgfddffgfdfdgLoremdsffffffffdsfdsfdsfdsdfsgdfgdfgdfsgdfsgdfgdfgfddffgfdfdg</Text>
+    <Text className={classes.taskText}>{task.text}</Text>
   </Div>
     <Spacing size={10} />
     <Div className={classes.taskButtons}>
