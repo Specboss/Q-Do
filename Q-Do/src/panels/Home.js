@@ -6,7 +6,7 @@ import {Icon12Articles, Icon20ListPlusOutline, Icon28ArticlesOutline,Icon16Check
 import Task from "../components/Task";
 import TasksList from "../components/TasksList";
 
-const Home = ({ id, go }) =>{
+const Home = ({ id, go, popout }) =>{
 
 	const [inputText,setInputText] = useState('')
 
@@ -40,7 +40,7 @@ const Home = ({ id, go }) =>{
 		</Tabs>
 
 		{selected === 'list' &&(
-			<TasksList setSelected={setSelected}/>
+			<TasksList setSelected={setSelected} popout={popout}/>
 			)}
 		{selected === 'create' &&(
 

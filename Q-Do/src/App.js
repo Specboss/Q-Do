@@ -15,10 +15,11 @@ const App = () => {
 
     useEffect(() => {
         async function fetchData() {
-            const token = await axios.post("http://localhost:3000/auth/login",{
+            const token = await axios.post("https://95.181.230.213:3000/auth/login",{
                 url: window.location.href
             });
-            localStorage.setItem("token",token.data);
+            console.log("auth")
+            localStorage.setItem("token",token.data.access_token);
             setPopout(null);
         }
 
@@ -34,7 +35,7 @@ const App = () => {
             <AdaptivityProvider>
                 <AppRoot>
                     <View activePanel={activePanel}>
-                        <Home id='home' go={go}/>
+                        <Home id='home' go={go} popout={popout}/>
                         <Persik id='persik' go={go}/>
 
                     </View>

@@ -6,7 +6,8 @@ import bridge from "@vkontakte/vk-bridge";
 import Task from "./Task"
 import axios from "axios";
 import {Icon20ListPlusOutline} from "@vkontakte/icons";
-const TasksList = ({setSelected}) => {
+const TasksList = ({setSelected, popout}) => {
+
 
     const [tasks, setTasks] = useState(null);
 
@@ -15,12 +16,14 @@ const TasksList = ({setSelected}) => {
 
     useEffect(() => {
         async function getTasks() {
-            const tasks = await axios.get("http://localhost:3000/tasks",{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}})
+            const tasks = await axios.get("https://95.181.230.213:3000/tasks",{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}})
+            console.log("task")
             if (tasks.data.length !== 0) setTasks(tasks.data)
+
         }
 
         getTasks();
-    }, []);
+    },[popout] );
     return(<>
                 {tasks?<>
                         {tasks.map((task)=>(
