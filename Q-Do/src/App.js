@@ -15,7 +15,7 @@ const App = () => {
 
     useEffect(() => {
         async function fetchData() {
-            const token = await axios.post("https://95.181.230.213:3000/auth/login",{
+            const token = await axios.post("https://qretex.site/auth/login",{
                 url: window.location.href
             });
             console.log("auth")
@@ -35,8 +35,9 @@ const App = () => {
             <AdaptivityProvider>
                 <AppRoot>
                     <View activePanel={activePanel}>
-                        <Home id='home' go={go} popout={popout}/>
+                        <Home id='home'  popout={popout}/>
                         <Persik id='persik' go={go}/>
+                        <Persik id='profile' go={go}/>
 
                     </View>
                     <Div className={classes.tabsBottom}>
