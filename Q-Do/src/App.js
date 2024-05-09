@@ -8,6 +8,7 @@ import Home from './panels/Home';
 import Persik from './panels/Persik';
 import {Icon16FolderOutline, Icon16ListBulletOutline,Icon20UserCircleOutline} from "@vkontakte/icons";
 import axios from "axios";
+import Folders from "./panels/Folders";
 
 const App = () => {
     const [activePanel, setActivePanel] = useState('home');
@@ -35,8 +36,8 @@ const App = () => {
             <AdaptivityProvider>
                 <AppRoot>
                     <View activePanel={activePanel}>
-                        <Home id='home'  popout={popout}/>
-                        <Persik id='persik' go={go}/>
+                        <Home id='home'/>
+                        <Folders id='persik' popout={popout}/>
                         <Persik id='profile' go={go}/>
 
                     </View>

@@ -7,7 +7,8 @@ import Task from "./Task"
 import axios from "axios";
 import {Icon20ListPlusOutline} from "@vkontakte/icons";
 import ViewTask from "./ViewTask";
-const TasksList = ({setSelected, popout}) => {
+const ViewFolder = ({folder}) => {
+    console.log(folder)
 
 
     const [tasks, setTasks] = useState(null);
@@ -25,7 +26,7 @@ const TasksList = ({setSelected, popout}) => {
         }
 
         getTasks();
-    },[popout,task] );
+    },[task] );
     return(<>
             {tasks? task? <ViewTask task={task} setTask={setTask}/>:<>
                     {tasks.map((task)=>(
@@ -66,4 +67,4 @@ const TasksList = ({setSelected, popout}) => {
     )};
 
 
-export default TasksList;
+export default ViewFolder;
