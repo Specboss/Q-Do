@@ -1,29 +1,33 @@
 import { Text,Div,Button,Spacing} from "@vkontakte/vkui";
 import React,{useRef, useState} from 'react';
-import classes from "../style/task.module.css"
+import classes from "../style/viewTask.module.css"
 import {Icon20WriteOutline, Icon20DeleteOutline} from "@vkontakte/icons";
 import EditTask from "./EditTask";
 import axios from "axios";
-const ViewTask = ({task, setTask}) => {
+const ViewTask = ({task, setTask,setBack, back}) => {
+    setBack("viewTask")
+    if (back === "backView"){
+        setTask(null)
+        setBack(null)
+    }
     let loading = false
-
     const [edit,setEdit] = useState(false)
     async function deleteTask(){
         if (loading) return
         loading = true
         await axios.delete(`https://qretex.site/tasks/${task.id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}});
         setTask(null)
+        setBack(null)
         loading = false
     }
 
 
 
-    return(edit? <EditTask task={task} setEdit={setEdit} setTask={setTask}/>:
+    return(edit? <EditTask task={task} setEdit={setEdit} setTask={setTask} setBack={setBack} back={back}/>:
 
         <Div className={classes.task}>
             <Text  className={classes.taskTitle}>{task.title}</Text>
-            <Div className={classes.taskTop}>
-                <Spacing size={10} />
+            <Div className={classes.taskTextDiv}>
                 <Text className={classes.taskText}>{task.text}</Text>
             </Div>
             <Spacing size={10} />

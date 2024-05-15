@@ -1,23 +1,40 @@
 import React, {useRef, useState,} from 'react';
 import PropTypes from 'prop-types';
 
-import { Panel, PanelHeader, Header, Button, Group, Cell, Div, Avatar,Tabs,TabsItem,Text,Spacing, View, Input, FormItem,IconButton,FormStatus ,Textarea } from '@vkontakte/vkui';
+import {
+	Panel,
+	PanelHeader,
+	Header,
+	Button,
+	Group,
+	Cell,
+	Div,
+	Avatar,
+	Tabs,
+	TabsItem,
+	Text,
+	Spacing,
+	View,
+	Input,
+	FormItem,
+	IconButton,
+	FormStatus,
+	Textarea,
+	PanelHeaderBack
+} from '@vkontakte/vkui';
 import {Icon12Articles, Icon20ListPlusOutline, Icon28ArticlesOutline,Icon16CheckDoubleOutline} from "@vkontakte/icons";
 import Task from "../components/Task";
 import TasksList from "../components/TasksList";
 import CreateTask from "../components/CreateTask";
 
 const Home = ({ id, popout }) =>{
-
-
-
 	const [selected, setSelected] = useState('list');
-
+	const [back, setBack] = useState(null)
 
 	return(
 
 	<Panel id={id}>
-		<PanelHeader>Q-Do</PanelHeader>
+		<PanelHeader before={back ? <PanelHeaderBack onClick={()=>{back ==="viewTask"? setBack("backView"): setBack("backEdit")}} /> : null} >Q-Do</PanelHeader>
 		<Tabs>
 			<TabsItem
 				selected={selected==="list"}
@@ -41,7 +58,7 @@ const Home = ({ id, popout }) =>{
 		</Tabs>
 
 		{selected === 'list' &&(
-			<TasksList setSelected={setSelected} popout={popout}/>
+			<TasksList setSelected={setSelected} popout={popout} setBack={setBack} back={back}/>
 			)}
 		{selected === 'create' &&(
 

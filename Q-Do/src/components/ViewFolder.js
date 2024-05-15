@@ -7,30 +7,47 @@ import Task from "./Task"
 import axios from "axios";
 import {Icon20ListPlusOutline} from "@vkontakte/icons";
 import ViewTask from "./ViewTask";
-const ViewFolder = ({folder}) => {
-    console.log(folder)
+import FolderTask from "./FolderTask";
+import AddTaskToFolder from "./AddTaskToFolder";
+const ViewFolder = ({folder, setFolder ,setBack, back}) => {
+    setBack("viewFolder")
+    if (back === "backFolder"){
+        setFolder(null)
+        setBack(null)
+    }
 
 
     const [tasks, setTasks] = useState(null);
     const [task, setTask] = useState(null)
+    const [addTask,setAddTask] = useState(false)
 
 
 
 
     useEffect(() => {
         async function getTasks() {
-            const tasks = await axios.get("https://qretex.site/tasks",{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}})
-            console.log("task")
-            if (tasks.data.length !== 0) setTasks(tasks.data)
+            const tasks = await axios.get(`https://qretex.site/folders/${folder.id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}})
+            console.log("taskf")
+            if (tasks.data.tasks.length !== 0){
+                setTasks(tasks.data.tasks)
+            }else{
+                setTasks(null)
+            }
+
 
         }
 
         getTasks();
-    },[task] );
+    },[task,addTask] );
     return(<>
-            {tasks? task? <ViewTask task={task} setTask={setTask}/>:<>
+            <Text>Папка: {folder.name}</Text>
+            {addTask? <AddTaskToFolder folderId={folder.id} setAddTask={setAddTask} setBack={setBack} back={back}/>: tasks? task? <ViewTask task={task} setTask={setTask} setBack={setBack} back={back}/>:<>
+                    <Button mode={"secondary"} size={'l'} onClick={() => {
+                        setAddTask(true);
+                    }}><Icon20ListPlusOutline color={"#E1E3E6"} width={25} height={25}/>
+                    </Button>
                     {tasks.map((task)=>(
-                        <Task key={task.id} task={task}  setTask={setTask} />
+                        <FolderTask key={task.id} task={task}  setTask={setTask} />
 
                     ))}</>
 
@@ -53,7 +70,7 @@ const ViewFolder = ({folder}) => {
                     }}>У Вас нет заметок</Text>
                     <Spacing size={32} />
                     <Button size={'l'} onClick={() => {
-                        setSelected('create');
+                        setAddTask(true);
                     }}>
                         <Text weight={'1'}   style={{
                             fontSize:"14px",
@@ -62,6 +79,7 @@ const ViewFolder = ({folder}) => {
                         }}>Добавить</Text>
                     </Button>
                 </Div>
+
             }
         </>
     )};

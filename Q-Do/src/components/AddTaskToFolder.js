@@ -7,12 +7,14 @@ import Task from "./Task"
 import axios from "axios";
 import {Icon20ListPlusOutline} from "@vkontakte/icons";
 import ViewTask from "./ViewTask";
-const TasksList = ({setSelected, popout,setBack,back}) => {
-
-
+import AddFolderTask from "./AddFolderTask";
+const AddTaskToFolder = ({folderId, setAddTask, setBack, back}) => {
+    setBack("addTaskToFolder")
+    if (back === "backAddTaskToFolder"){
+        setAddTask(false)
+    }
 
     const [tasks, setTasks] = useState(null);
-    const [task, setTask] = useState(null)
 
 
 
@@ -20,7 +22,6 @@ const TasksList = ({setSelected, popout,setBack,back}) => {
     useEffect(() => {
         async function getTasks() {
             const tasks = await axios.get("https://qretex.site/tasks",{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}})
-            console.log("task")
             if (tasks.data.length !== 0){
                 setTasks(tasks.data)
             }else{
@@ -30,11 +31,11 @@ const TasksList = ({setSelected, popout,setBack,back}) => {
         }
 
         getTasks();
-    },[popout, task] );
+    }, );
     return(<>
-            {tasks? task? <ViewTask task={task} setTask={setTask} setBack={setBack} back={back}/>:<>
+            {tasks? <>
                     {tasks.map((task)=>(
-                        <Task key={task.id} task={task}  setTask={setTask} />
+                        <AddFolderTask key={task.id} task={task} folderId={folderId} setAddTask={setAddTask} />
 
                     ))}</>
 
@@ -55,20 +56,10 @@ const TasksList = ({setSelected, popout,setBack,back}) => {
                         fontSize:"20px",
                         weight:"500"
                     }}>У Вас нет заметок</Text>
-                    <Spacing size={32} />
-                    <Button size={'l'} onClick={() => {
-                        setSelected('create');
-                    }}>
-                        <Text weight={'1'}   style={{
-                            fontSize:"14px",
-
-
-                        }}>Добавить</Text>
-                    </Button>
                 </Div>
             }
         </>
     )};
 
 
-export default TasksList;
+export default AddTaskToFolder;

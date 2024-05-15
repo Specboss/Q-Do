@@ -1,0 +1,41 @@
+.task{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.taskText{
+    width: 80vw;
+    font-size: 15px;
+    color: #969A9F;
+}
+
+.taskTitle{
+    font-size: 25px;
+    color: #E1E3E6;
+    font-weight: bold;
+    text-align: left;
+    width: 80vw;
+    padding: 20px;
+
+
+}
+.taskTextDiv{
+
+    background-color: #2D2D2E;
+    border-radius: 15px;
+    padding: 3vw;
+}
+
+.taskButtons{
+    display: flex;
+    justify-content: space-between;
+    width: 86vw;
+    padding: 0;
+
+}
+
+.taskButton{
+   height: 35px;
+}

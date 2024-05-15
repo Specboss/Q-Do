@@ -6,7 +6,7 @@ import {Icon20FolderSimplePlusOutline} from "@vkontakte/icons";
 import Folder from "./Folder";
 import ViewFolder from "./ViewFolder";
 
-const FolderList = ({setSelected}) => {
+const FolderList = ({setSelected, setBack, back}) => {
 
 
     const [folders, setFolders] = useState(null);
@@ -25,7 +25,7 @@ const FolderList = ({setSelected}) => {
         getFolders();
     },[] );
     return(<>
-            {folders? folder? <ViewFolder folder={folder}/>:<>
+            {folders? folder? <ViewFolder folder={folder} setFolder={setFolder} setBack={setBack} back={back}/>:<>
                     {folders.map((folder)=>(
                         <Folder key={folder.id} folder={folder}  setFolder={setFolder} />
 
