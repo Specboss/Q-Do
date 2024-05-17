@@ -23,7 +23,7 @@ const FolderList = ({setSelected, setBack, back}) => {
         }
 
         getFolders();
-    },[] );
+    },[folder] );
     return(<>
             {folders? folder? <ViewFolder folder={folder} setFolder={setFolder} setBack={setBack} back={back}/>:<>
                     {folders.map((folder)=>(

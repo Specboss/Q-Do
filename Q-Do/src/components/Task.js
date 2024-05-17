@@ -9,8 +9,8 @@ const Task = ({task,setTask}) => {
   async function completeTask(){
     if (loading) return
     loading = true
-    await axios.patch(`https://qretex.site/tasks/complete/${task.id}`,{},{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}});
-    setCompleted(true)
+    const taskComplete = await axios.patch(`https://qretex.site/tasks/complete/${task.id}`,{},{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}});
+    setCompleted(taskComplete.data.completed)
     loading = false
   }
 
