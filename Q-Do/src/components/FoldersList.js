@@ -18,8 +18,12 @@ const FolderList = ({setSelected, setBack, back}) => {
     useEffect(() => {
         async function getFolders() {
             const folders = await axios.get("https://qretex.site/folders",{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}})
-            if (folders.data.length !== 0) setFolders(folders.data)
-
+            if (folders.data.length !== 0) {
+                setFolders(folders.data)
+            }else {
+                setFolders(null)
+            }
+            if (!folder) setFolder(null)//Костыль
         }
 
         getFolders();

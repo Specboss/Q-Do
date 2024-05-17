@@ -19,7 +19,6 @@ const App = () => {
             const token = await axios.post("https://qretex.site/auth/login",{
                 url: window.location.href
             });
-            console.log("auth")
             localStorage.setItem("token",token.data.access_token);
             setPopout(null);
         }

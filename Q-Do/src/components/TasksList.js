@@ -20,7 +20,6 @@ const TasksList = ({setSelected, popout,setBack,back}) => {
     useEffect(() => {
         async function getTasks() {
             const tasks = await axios.get("https://qretex.site/tasks",{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}})
-            console.log("task")
             if (tasks.data.length !== 0){
                 setTasks(tasks.data)
             }else{
