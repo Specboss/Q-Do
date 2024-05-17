@@ -1,6 +1,7 @@
 import {Button, Div, FormItem, Input, Spacing, Textarea} from "@vkontakte/vkui";
 import {Icon16CheckDoubleOutline} from "@vkontakte/icons";
 import React from "react";
+import classes from "../style/createFolder.module.css"
 import {useState} from "react";
 import axios from "axios";
 
@@ -17,28 +18,15 @@ const CreateFolder = ({}) => {
         setInputText('')
         loading = false
     }
-    return (<Div  style={{
-        height: "80vh",
-        display:"flex",
-        alignItems: "center",
-        flexDirection: "column",
-
-    }}>
-
-        <Spacing size={20} />
+    return (<Div  className={classes.createFolder}>
 
 
-        <FormItem
-            htmlFor="inputName"
-        >
+
+        <FormItem htmlFor="inputName" >
+            <Div className={classes.folderImg}>
+
             <Input
-                style={{
-                    width: "85vw",
-
-
-
-                }}
-
+                className={classes.folderInput}
                 id="inputName"
                 value={inputText}
                 onChange={(event) => setInputText(event.target.value)}
@@ -46,6 +34,7 @@ const CreateFolder = ({}) => {
                 placeholder="Название папки..."
 
             />
+            </Div>
             {/*{successful && <FormStatus header="Задача добавлена успешно" >*/}
             {/*</FormStatus>}*/}
 
