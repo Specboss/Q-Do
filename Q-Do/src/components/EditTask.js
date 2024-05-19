@@ -2,6 +2,7 @@ import {Button, Div, FormItem, Input, Spacing, Textarea} from "@vkontakte/vkui";
 import {Icon16CheckDoubleOutline,Icon20DeleteOutline,Icon20ArrowUturnLeftOutline} from "@vkontakte/icons";
 import React from "react";
 import {useState} from "react";
+import classes from "../style/editTask.module.css";
 import axios from "axios";
 
 const EditTask = ({task, setEdit, setTask, setBack, back}) => {
@@ -40,31 +41,17 @@ const EditTask = ({task, setEdit, setTask, setBack, back}) => {
         })
         loading = false
     }
-    return (<Div  style={{
-        height: "80vh",
-        display:"flex",
-        alignItems: "center",
-        flexDirection: "column",
+    return (<Div  className={classes.editTask}>
 
-    }}>
 
-        <Spacing size={20} />
 
 
         <FormItem
-            style={{
-                paddingBottom: "0",
-            }}
+            className={classes.formTitle}
             htmlFor="inputName"
         >
             <Input
-                style={{
-                    width: "85vw",
-
-
-
-                }}
-
+                className={classes.input}
                 id="inputName"
                 value={inputText}
                 onChange={(event) => setInputText(event.target.value)}
@@ -79,9 +66,7 @@ const EditTask = ({task, setEdit, setTask, setBack, back}) => {
 
         <FormItem htmlFor="inputTask">
             <Textarea
-                style={{
-                    width: "85vw",
-                }}
+                className={classes.input}
                 rows={15}
 
                 id="inputTask"
@@ -98,19 +83,13 @@ const EditTask = ({task, setEdit, setTask, setBack, back}) => {
 
 
         <FormItem>
-        <Div  style={{
-            margin:"0",
-        	display:"flex",
-        	justifyContent:"space-between",
-            width: "85vw",
-            paddingTop:"0"
-        }}>
-            <Button onClick={deleteTask}  mode={"secondary"} ><Icon20DeleteOutline  width={16} height={16} color={"#EB2626"}/></Button>
-            <Button onClick={updateTask} mode={"secondary"} disabled={!inputText || !textareaText}><Icon16CheckDoubleOutline  width={16} height={16} color={(inputText && textareaText) ? "#26EB51": "#ACACAC"}/></Button>
-            <Button onClick={()=> {
+        <Div  className={classes.buttons} >
+            <Button className={classes.button} onClick={deleteTask}  mode={"secondary"} ><Icon20DeleteOutline  width={25} height={25} color={"#EB2626"}/></Button>
+            <Button className={classes.button} onClick={updateTask} mode={"secondary"} disabled={!inputText || !textareaText}><Icon16CheckDoubleOutline  width={25} height={25} color={(inputText && textareaText) ? "#26EB51": "#ACACAC"}/></Button>
+            <Button className={classes.button} onClick={()=> {
                 setInputText(defaultTitle);
                 setTextareaText(defaultText);
-            }} mode={"secondary"} ><Icon20ArrowUturnLeftOutline  width={16} height={16} color={"#E1E3E6"}/></Button>
+            }} mode={"secondary"} ><Icon20ArrowUturnLeftOutline  width={25} height={25} color={"#E1E3E6"}/></Button>
         </Div>
         </FormItem>
     </Div>)

@@ -1,0 +1,39 @@
+.noTask{
+    height: 80vh;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.text{
+    font-size:20px;
+    font-weight:500;
+}
+
+.buttonText{
+    font-size: 14px;
+}
+
+.top{
+    height: 35px;
+    display: flex;
+    padding: 0;
+    width: 88vw;
+    justify-content: space-between;
+    align-items: center;
+}
+.topPosition{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.button{
+    height: 35px;
+}
+
+.folderText{
+    color: #696969;
+}

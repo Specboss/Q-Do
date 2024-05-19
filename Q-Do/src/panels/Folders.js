@@ -1,31 +1,17 @@
-import React, {useRef, useState,} from 'react';
+import React, { useState,} from 'react';
 import PropTypes from 'prop-types';
 
 import {
     Panel,
     PanelHeader,
-    Header,
-    Button,
-    Group,
-    Cell,
-    Div,
-    Avatar,
     Tabs,
     TabsItem,
-    Text,
-    Spacing,
-    View,
-    Input,
-    FormItem,
-    IconButton,
-    FormStatus,
-    Textarea,
     PanelHeaderBack
 } from '@vkontakte/vkui';
 import FoldersList from "../components/FoldersList";
 import CreateFolder from "../components/CreateFolder";
 
-const Folders = ({ id, popout }) =>{
+const Folders = ({ id }) =>{
 
 
 
@@ -54,6 +40,7 @@ const Folders = ({ id, popout }) =>{
                     selected={selected==="create"}
                     onClick={() => {
                         setSelected('create');
+                        setBack(null)
                     }}
                 >
                     Создать

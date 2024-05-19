@@ -13,7 +13,7 @@ const FolderTask = ({task,setTask}) => {
         loading = true
         await axios.delete(`https://qretex.site/folders/task/${task.id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}});
         setDisplayTask("none")
-        setTask(null)
+        setTask(false)
         loading = false
     }
 

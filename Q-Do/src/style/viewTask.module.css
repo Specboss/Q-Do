@@ -17,7 +17,7 @@
     font-weight: bold;
     text-align: left;
     width: 80vw;
-    padding: 20px;
+    padding: 0 20px 20px;
 
 
 }
@@ -25,13 +25,13 @@
 
     background-color: #2D2D2E;
     border-radius: 15px;
-    padding: 3vw;
+    padding: 3vw 4vw;
 }
 
 .taskButtons{
     display: flex;
     justify-content: space-between;
-    width: 86vw;
+    width: 88vw;
     padding: 0;
 
 }

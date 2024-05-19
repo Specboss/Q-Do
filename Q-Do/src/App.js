@@ -5,10 +5,10 @@ import '@vkontakte/vkui/dist/vkui.css';
 import classes from "./style/tabsBottom.module.css"
 
 import Home from './panels/Home';
-import Persik from './panels/Persik';
 import {Icon16FolderOutline, Icon16ListBulletOutline,Icon20UserCircleOutline} from "@vkontakte/icons";
 import axios from "axios";
 import Folders from "./panels/Folders";
+import Profile from "./panels/Profile";
 
 const App = () => {
     const [activePanel, setActivePanel] = useState('home');
@@ -35,9 +35,9 @@ const App = () => {
             <AdaptivityProvider>
                 <AppRoot>
                     <View activePanel={activePanel}>
-                        <Home id='home'/>
-                        <Folders id='persik' popout={popout}/>
-                        <Persik id='profile' go={go}/>
+                        <Home id='home' popout={popout}/>
+                        <Folders id='folders'/>
+                        <Profile id='profile' go={go}/>
 
                     </View>
                     <Div className={classes.tabsBottom}>
@@ -45,8 +45,8 @@ const App = () => {
                         <Div  onClick={go} data-to="home" >
                             <Icon16ListBulletOutline width={30} height={30} color={activePanel ==="home" ? "#F2F2F2": "#545454"}/>
                         </Div>
-                        <Div  onClick={go} data-to="persik">
-                            <Icon16FolderOutline width={30} height={30} color={activePanel ==="persik" ? "#F2F2F2": "#545454"}/>
+                        <Div  onClick={go} data-to="folders">
+                            <Icon16FolderOutline width={30} height={30} color={activePanel ==="folders" ? "#F2F2F2": "#545454"}/>
                         </Div>
                         <Div  onClick={go} data-to="profile">
                             <Icon20UserCircleOutline width={30} height={30} color={activePanel ==="profile" ? "#F2F2F2": "#545454"}/>

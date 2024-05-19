@@ -1,29 +1,13 @@
-import React, {useRef, useState,} from 'react';
+import React, { useState,} from 'react';
 import PropTypes from 'prop-types';
 
 import {
 	Panel,
 	PanelHeader,
-	Header,
-	Button,
-	Group,
-	Cell,
-	Div,
-	Avatar,
 	Tabs,
 	TabsItem,
-	Text,
-	Spacing,
-	View,
-	Input,
-	FormItem,
-	IconButton,
-	FormStatus,
-	Textarea,
 	PanelHeaderBack
 } from '@vkontakte/vkui';
-import {Icon12Articles, Icon20ListPlusOutline, Icon28ArticlesOutline,Icon16CheckDoubleOutline} from "@vkontakte/icons";
-import Task from "../components/Task";
 import TasksList from "../components/TasksList";
 import CreateTask from "../components/CreateTask";
 
@@ -48,7 +32,8 @@ const Home = ({ id, popout }) =>{
 			<TabsItem
 				selected={selected==="create"}
 				onClick={() => {
-					setSelected('create');
+					setSelected('create')
+					setBack(null);
 				}}
 
 
@@ -62,7 +47,7 @@ const Home = ({ id, popout }) =>{
 			)}
 		{selected === 'create' &&(
 
-			<CreateTask/>
+			<CreateTask setSelected={setSelected} />
 			)}
 
 

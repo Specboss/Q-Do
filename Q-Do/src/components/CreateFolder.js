@@ -35,23 +35,16 @@ const CreateFolder = ({}) => {
 
             />
             </Div>
-            {/*{successful && <FormStatus header="Задача добавлена успешно" >*/}
-            {/*</FormStatus>}*/}
+
 
         </FormItem>
 
 
-        {/*<Div  style={{*/}
-        {/*	paddingRight:"0",*/}
-        {/*	display:"flex",*/}
-        {/*	alignItems: "flex-end",*/}
-        {/*	flexDirection: "column",*/}
 
-        {/*}}>*/}
-        <Button onClick={createTask} mode={"secondary"} disabled={!inputText}><Icon16CheckDoubleOutline  width={16} height={16} color={(inputText) ? "#26EB51": "#ACACAC"}/></Button>
+        <Button className={classes.button} onClick={createTask} mode={"secondary"} disabled={!inputText}><Icon16CheckDoubleOutline  width={25} height={25} color={(inputText) ? "#26EB51": "#ACACAC"}/></Button>
 
 
-        {/*</Div>*/}
+
     </Div>)
 
 }

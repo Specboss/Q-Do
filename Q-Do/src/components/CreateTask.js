@@ -2,9 +2,10 @@ import {Button, Div, FormItem, Input, Spacing, Textarea} from "@vkontakte/vkui";
 import {Icon16CheckDoubleOutline} from "@vkontakte/icons";
 import React from "react";
 import {useState} from "react";
+import classes from "../style/editTask.module.css";
 import axios from "axios";
 
-const CreateTask = ({}) => {
+const CreateTask = ({setSelected}) => {
     const [inputText,setInputText] = useState('')
     const [textareaText,setTextareaText] = useState('')
     let loading = false
@@ -16,36 +17,22 @@ const CreateTask = ({}) => {
             title: inputText,
             text: textareaText
         },{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}});
+        setSelected('list')
         setInputText('')
         setTextareaText('')
         loading = false
     }
-    return (<Div  style={{
-        height: "80vh",
-        display:"flex",
-        alignItems: "center",
-        flexDirection: "column",
-
-    }}>
+    return (<Div className={classes.editTask}>
 
         <Spacing size={20} />
 
 
         <FormItem
-            style={{
-                paddingBottom: "0",
-            }}
+            className={classes.formTitle}
             htmlFor="inputName"
-
         >
             <Input
-                style={{
-                    width: "85vw",
-
-
-
-                }}
-
+                className={classes.input}
                 id="inputName"
                 value={inputText}
                 onChange={(event) => setInputText(event.target.value)}
@@ -53,8 +40,7 @@ const CreateTask = ({}) => {
                 placeholder="Название заметки"
 
             />
-            {/*{successful && <FormStatus header="Задача добавлена успешно" >*/}
-            {/*</FormStatus>}*/}
+
 
         </FormItem>
 
@@ -63,12 +49,7 @@ const CreateTask = ({}) => {
 
         >
             <Textarea
-                style={{
-                    width: "85vw",
-
-
-
-                }}
+                className={classes.input}
                 rows={15}
 
                 id="inputTask"
@@ -78,21 +59,13 @@ const CreateTask = ({}) => {
                 placeholder="Описание..."
 
             />
-            {/*{successful && <FormStatus header="Задача добавлена успешно" >*/}
-            {/*</FormStatus>}*/}
+
 
         </FormItem>
-        {/*<Div  style={{*/}
-        {/*	paddingRight:"0",*/}
-        {/*	display:"flex",*/}
-        {/*	alignItems: "flex-end",*/}
-        {/*	flexDirection: "column",*/}
-
-        {/*}}>*/}
-        <Button onClick={createTask} mode={"secondary"} disabled={!inputText || !textareaText}><Icon16CheckDoubleOutline  width={16} height={16} color={(inputText && textareaText) ? "#26EB51": "#ACACAC"}/></Button>
+        <Button className={classes.button} onClick={createTask} mode={"secondary"} disabled={!inputText || !textareaText}><Icon16CheckDoubleOutline  width={25} height={25} color={(inputText && textareaText) ? "#26EB51": "#ACACAC"}/></Button>
 
 
-        {/*</Div>*/}
+
     </Div>)
 
 }
