@@ -36,7 +36,7 @@ const FolderTask = ({task,setTask}) => {
                 <Text style={{
                     textDecoration: completed? "line-through": "none"
                 }}  className={classes.taskTitle}>{task.title}</Text>
-                <Spacing size={10} />
+                <Spacing size={7} />
                 <Text style={{
                     textDecoration: completed? "line-through": "none"
                 }} className={classes.taskText}>{task.text}</Text>

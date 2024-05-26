@@ -15,13 +15,19 @@
 }
 
 .taskTitle{
+    padding-bottom: 1px;
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 80vw;
     font-size: 20px;
     color: #E1E3E6;
     font-weight: bold;
 
 }
 .taskTop{
-
+    height: 90px;
     background-color: #2D2D2E;
     border-radius: 15px;
     padding: 4vw;

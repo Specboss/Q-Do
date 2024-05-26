@@ -33,7 +33,9 @@ const FolderList = ({setSelected, setBack, back}) => {
                     {folders.map((folder)=>(
                         <Folder key={folder.id} folder={folder}  setFolder={setFolder} />
 
-                    ))}</>
+                    ))}
+                    <Div style={{height:"11vh"}}/>
+                </>
 
                 :
                 <Div  style={{

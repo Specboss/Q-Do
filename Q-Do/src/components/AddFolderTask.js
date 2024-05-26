@@ -21,7 +21,7 @@ const AddFolderTask = ({task, folderId,setAddTask}) => {
         <Div className={classes.task} >
             <Div className={classes.taskTop}>
                 <Text  className={classes.taskTitle}>{task.title}</Text>
-                <Spacing size={10} />
+                <Spacing size={7} />
                 <Text className={classes.taskText}>{task.text}</Text>
             </Div>
             <Spacing size={10} />

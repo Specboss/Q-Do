@@ -19,11 +19,11 @@ const Task = ({task,setTask}) => {
     return(
 
   <Div className={classes.task}>
-  <Div className={classes.taskTop}>
+  <Div className={classes.taskTop}  onClick={()=>setTask(task)}>
     <Text style={{
       textDecoration: completed? "line-through": "none"
     }} className={classes.taskTitle}>{task.title}</Text>
-    <Spacing size={10} />
+    <Spacing size={7} />
     <Text style={{
       textDecoration: completed? "line-through": "none"
     }} className={classes.taskText}>{task.text}</Text>

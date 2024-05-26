@@ -22,7 +22,7 @@
 
 }
 .taskTextDiv{
-
+    min-height: 204px;
     background-color: #2D2D2E;
     border-radius: 15px;
     padding: 3vw 4vw;

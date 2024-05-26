@@ -37,7 +37,8 @@ const AddTaskToFolder = ({folderId, setAddTask, setBack, back}) => {
                     {tasks.map((task)=>(
                         <AddFolderTask key={task.id} task={task} folderId={folderId} setAddTask={setAddTask} />
 
-                    ))}</>
+                    ))}
+                    <Div style={{height:"11vh"}}/></>
 
                 :
                 <Div  style={{
