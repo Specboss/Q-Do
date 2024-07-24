@@ -12,6 +12,7 @@
 }
 
 .taskTitle{
+    line-height: 30px;
     font-size: 25px;
     color: #E1E3E6;
     font-weight: bold;

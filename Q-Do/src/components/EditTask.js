@@ -39,6 +39,7 @@ const EditTask = ({task, setEdit, setTask, setBack, back}) => {
             text: textareaText,
 
         })
+        setEdit(null)
         loading = false
     }
     return (<Div  className={classes.editTask}>

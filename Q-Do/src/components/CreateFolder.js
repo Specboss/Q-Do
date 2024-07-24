@@ -5,7 +5,7 @@ import classes from "../style/createFolder.module.css"
 import {useState} from "react";
 import axios from "axios";
 
-const CreateFolder = ({}) => {
+const CreateFolder = ({setSelected}) => {
     const [inputText,setInputText] = useState('')
     let loading = false
 
@@ -15,7 +15,7 @@ const CreateFolder = ({}) => {
         await axios.post("https://qretex.site/folders",{
             name: inputText
         },{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}});
-        setInputText('')
+        setSelected("list")
         loading = false
     }
     return (<Div  className={classes.createFolder}>

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import bridge from '@vkontakte/vk-bridge';
-import {View, ScreenSpinner, AdaptivityProvider, AppRoot, ConfigProvider,Div} from '@vkontakte/vkui';
+import {View, ScreenSpinner, AdaptivityProvider, AppRoot, ConfigProvider,Div,SplitLayout, ModalCard,ModalPage,ModalRoot} from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 import classes from "./style/tabsBottom.module.css"
 
@@ -9,11 +9,11 @@ import {Icon16FolderOutline, Icon16ListBulletOutline,Icon20UserCircleOutline} fr
 import axios from "axios";
 import Folders from "./panels/Folders";
 import Profile from "./panels/Profile";
+import Modal from "./components/Modal";
 
 const App = () => {
     const [activePanel, setActivePanel] = useState('home');
     const [popout, setPopout] = useState(<ScreenSpinner size='large'/>);
-
     useEffect(() => {
         async function fetchData() {
             const token = await axios.post("https://qretex.site/auth/login",{
@@ -34,13 +34,16 @@ const App = () => {
         <ConfigProvider>
             <AdaptivityProvider>
                 <AppRoot>
+
+
                     <View activePanel={activePanel}>
                         <Home id='home' popout={popout}/>
-                        <Folders id='folders'/>
-                        <Profile id='profile' go={go}/>
+                        <Folders id='folders' />
+                        <Profile id='profile' />
 
                     </View>
-                    <Div className={classes.tabsBottom}>
+
+                    <Div id={'tabs'} className={classes.tabsBottom} >
                     <Div className={classes.tabsBottomVisible}>
                         <Div  onClick={go} data-to="home" >
                             <Icon16ListBulletOutline width={30} height={30} color={activePanel ==="home" ? "#F2F2F2": "#545454"}/>
@@ -60,5 +63,4 @@ const App = () => {
         </ConfigProvider>
     );
 }
-
 export default App;

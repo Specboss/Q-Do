@@ -22,3 +22,9 @@
     align-items: center;
 }
 
+@media (max-height: 550px) {
+    .tabsBottom{
+        display: none;
+    }
+}
+

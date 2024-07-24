@@ -32,7 +32,7 @@ const FolderTask = ({task,setTask}) => {
         <Div className={classes.task} style={{
             display: displayTask
         }}>
-            <Div className={classes.taskTop}>
+            <Div className={classes.taskTop} onClick={()=>setTask(task)}>
                 <Text style={{
                     textDecoration: completed? "line-through": "none"
                 }}  className={classes.taskTitle}>{task.title}</Text>

@@ -48,11 +48,11 @@ const Folders = ({ id }) =>{
             </Tabs>
 
             {selected === 'list' &&(
-                <FoldersList setSelected={setSelected} setBack={setBack} back={back}/>
+                <FoldersList setSelected={setSelected} setBack={setBack} back={back} />
             )}
             {selected === 'create' &&(
 
-                <CreateFolder/>
+                <CreateFolder setSelected={setSelected}/>
             )}
 
 

@@ -18,8 +18,6 @@ const CreateTask = ({setSelected}) => {
             text: textareaText
         },{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}});
         setSelected('list')
-        setInputText('')
-        setTextareaText('')
         loading = false
     }
     return (<Div className={classes.editTask}>
