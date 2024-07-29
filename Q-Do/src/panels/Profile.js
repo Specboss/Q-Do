@@ -12,23 +12,24 @@ import {
     Image,
 } from '@vkontakte/vkui';
 import bridge from "@vkontakte/vk-bridge";
+import axios from "axios";
 
 const Profile = ({ id }) =>{
     const [user, setUser] = useState(null);
     const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
+    const [userStats, setUserStats] = useState(null)
 
     useEffect(() => {
         async function fetchData() {
             const user = await bridge.send('VKWebAppGetUserInfo');
+            const userStats = await axios.get("https://qretex.site/users",{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}})
+            setUserStats(userStats.data)
             setUser(user);
             setPopout(null)
 
         }
         fetchData();
     }, []);
-
-    console.log('12123123123')
-    console.log(user)
     const heart = '\u{1F499}'
     return(
 
@@ -42,9 +43,9 @@ const Profile = ({ id }) =>{
                     <Text className={classes.profile__username}>@{user.id}</Text>
 
                     <Div className={classes.profile__stats}>
-                        <Text>Ваши заметки: 42</Text>
-                        <Text>Выполненные заметки: 52</Text>
-                        <Text>Количество папок: 3</Text>
+                        <Text>Ваши заметки: {userStats.tasks}</Text>
+                        <Text>Выполненные заметки: {userStats.completedTasks}</Text>
+                        <Text>Количество папок: {userStats.folder}</Text>
                     </Div>
 
                     <Text className={classes.profile__signature}>with {heart} by Qretex</Text>

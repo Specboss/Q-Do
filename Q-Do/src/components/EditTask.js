@@ -4,6 +4,8 @@ import React from "react";
 import {useState} from "react";
 import classes from "../style/editTask.module.css";
 import axios from "axios";
+import Modal from "./Modal";
+import DeletConfirmationModal from "./DeletConfirmationModal";
 
 const EditTask = ({task, setEdit, setTask, setBack, back}) => {
     setBack("editTask")
@@ -12,6 +14,7 @@ const EditTask = ({task, setEdit, setTask, setBack, back}) => {
     }
     const defaultTitle = task.title
     const defaultText = task.text
+    const [modal, setModal] = useState(false)
     const [inputText,setInputText] = useState(task.title)
     const [textareaText,setTextareaText] = useState(task.text)
     let loading = false
@@ -20,6 +23,10 @@ const EditTask = ({task, setEdit, setTask, setBack, back}) => {
         if (loading) return
         loading = true
         await axios.delete(`https://qretex.site/tasks/${task.id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}});
+        setModal(false)
+        const tabs = await document.getElementById("tabs")
+        document.body.style.overflow = 'auto'
+        tabs.style.display = 'flex'
         setTask(null)
         setBack(null)
         loading = false
@@ -42,7 +49,9 @@ const EditTask = ({task, setEdit, setTask, setBack, back}) => {
         setEdit(null)
         loading = false
     }
-    return (<Div  className={classes.editTask}>
+    return (<>
+        {modal && <Modal setModal={setModal}><DeletConfirmationModal deleteFunc={deleteTask} />}</Modal>}
+        <Div  className={classes.editTask}>
 
 
 
@@ -85,7 +94,7 @@ const EditTask = ({task, setEdit, setTask, setBack, back}) => {
 
         <FormItem>
         <Div  className={classes.buttons} >
-            <Button className={classes.button} onClick={deleteTask}  mode={"secondary"} ><Icon20DeleteOutline  width={25} height={25} color={"#EB2626"}/></Button>
+            <Button className={classes.button} onClick={()=>setModal(true)}  mode={"secondary"} ><Icon20DeleteOutline  width={25} height={25} color={"#EB2626"}/></Button>
             <Button className={classes.button} onClick={updateTask} mode={"secondary"} disabled={!inputText || !textareaText}><Icon16CheckDoubleOutline  width={25} height={25} color={(inputText && textareaText) ? "#26EB51": "#ACACAC"}/></Button>
             <Button className={classes.button} onClick={()=> {
                 setInputText(defaultTitle);
@@ -93,7 +102,8 @@ const EditTask = ({task, setEdit, setTask, setBack, back}) => {
             }} mode={"secondary"} ><Icon20ArrowUturnLeftOutline  width={25} height={25} color={"#E1E3E6"}/></Button>
         </Div>
         </FormItem>
-    </Div>)
+    </Div>
+    </>)
 
 }
 export default EditTask;

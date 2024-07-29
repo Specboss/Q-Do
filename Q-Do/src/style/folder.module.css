@@ -20,6 +20,9 @@
 
 }
 .folderImg{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-image: url("../img/folder.svg");
     background-color: white;
     background-position: 50% 50%;
@@ -37,7 +40,11 @@
 }
 
 .folderButton{
-   height: 35px;
+    height: 35px;
+    padding: 0;
+    margin-top: 20px;
+
+
 }
 .folderInput{
     width: 80vw;

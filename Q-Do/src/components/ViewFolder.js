@@ -28,7 +28,6 @@ const ViewFolder = ({folder, setFolder ,setBack, back}) => {
     useEffect(() => {
         async function getTasks() {
             const tasks = await axios.get(`https://qretex.site/folders/${folder.id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}})
-            console.log(tasks)
             if (tasks.data.tasks.length !== 0){
                 setTasks(tasks.data.tasks)
             }else{

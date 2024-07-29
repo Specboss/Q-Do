@@ -1,0 +1,55 @@
+.menu {
+    background-color: #2D2D2E;
+    width: 80%;
+    height: 20%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 2vh;
+    cursor: pointer;
+
+
+}
+
+.menu_item {
+    width: 80%;
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.button{
+    justify-content: center;
+    align-items: center;
+    width: 32vw;
+    height: 90%;
+    display: flex;
+}
+.menu_item:first-child{
+    border-bottom:  1px solid #363738;
+}
+.menu_item:last-child{
+    width: 92%;
+}
+.button:first-child{
+    border-right: 1px solid #363738;
+}
+
+.text_del{
+    color: red;
+    font-weight: bold;
+ }
+
+.text{
+    font-weight: bold;
+}
+
+
+
+

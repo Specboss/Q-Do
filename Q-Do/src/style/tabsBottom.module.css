@@ -22,7 +22,7 @@
     align-items: center;
 }
 
-@media (max-height: 550px) {
+@media (max-height: 600px) {
     .tabsBottom{
         display: none;
     }
