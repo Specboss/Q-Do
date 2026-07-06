@@ -1,0 +1,24 @@
+# syntax=docker/dockerfile:1
+
+# ---------- build stage ----------
+FROM docker.io/library/node:18-alpine AS build
+WORKDIR /app
+
+# Устанавливаем зависимости строго по lock-файлу (воспроизводимая сборка)
+COPY package.json package-lock.json ./
+RUN npm ci
+
+# Собираем production-бандл (создаётся ./build)
+COPY . .
+ENV NODE_ENV=production
+ENV GENERATE_SOURCEMAP=false
+RUN npm run build
+
+# ---------- runtime stage ----------
+# nginx-unprivileged слушает 8080 и работает не от root — подходит для rootless podman
+FROM docker.io/nginxinc/nginx-unprivileged:1.27-alpine AS runtime
+
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/build /usr/share/nginx/html
+
+EXPOSE 8080
