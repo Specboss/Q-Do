@@ -13,7 +13,7 @@ services:
     # Хост:контейнер. Внутри nginx-unprivileged слушает 8080.
     # Порт 8080 на хосте биндится без прав root (rootless podman).
     ports:
-      - "8080:8080"
+      - "127.0.0.1:8080:8080"
     healthcheck:
       test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1:8080/"]
       interval: 30s
