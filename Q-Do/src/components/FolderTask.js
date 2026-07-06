@@ -2,7 +2,7 @@ import { Text,Div,Button,Spacing} from "@vkontakte/vkui";
 import React,{useRef, useState} from 'react';
 import classes from "../style/task.module.css"
 import {Icon20ArrowRightOutline, Icon20CheckCircleOutline,Icon20FolderSimpleArrowUpOutline} from "@vkontakte/icons";
-import axios from "axios";
+import api from "../api";
 const FolderTask = ({task,setTask}) => {
     let loading = false
     const [displayTask,setDisplayTask] = useState("flex")
@@ -11,7 +11,7 @@ const FolderTask = ({task,setTask}) => {
     async function removeTaskFromFolder(){
         if (loading) return
         loading = true
-        await axios.delete(`https://qretex.site/folders/task/${task.id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}});
+        await api.delete(`/folders/task/${task.id}`);
         setDisplayTask("none")
         setTask(false)
         loading = false
@@ -20,7 +20,7 @@ const FolderTask = ({task,setTask}) => {
     async function completeTask(){
         if (loading) return
         loading = true
-        const taskComplete = await axios.patch(`https://qretex.site/tasks/complete/${task.id}`,{},{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}});
+        const taskComplete = await api.patch(`/tasks/complete/${task.id}`,{});
         setCompleted(taskComplete.data.completed)
         loading = false
     }

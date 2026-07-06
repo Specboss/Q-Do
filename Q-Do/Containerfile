@@ -12,6 +12,12 @@ RUN npm ci
 COPY . .
 ENV NODE_ENV=production
 ENV GENERATE_SOURCEMAP=false
+
+# URL бэкенда задаётся при сборке (CRA инжектит REACT_APP_* в бандл на этапе build).
+# Значение по умолчанию — прод-домен; переопределяется через build-arg в compose.
+ARG REACT_APP_API_URL=https://qretex.site
+ENV REACT_APP_API_URL=${REACT_APP_API_URL}
+
 RUN npm run build
 
 # ---------- runtime stage ----------

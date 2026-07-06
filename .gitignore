@@ -1,3 +1,8 @@
 # Project exclude paths
 /Q-Do/node_modules/
 /TODO/node_modules/
+
+# Env files (кроме .env.example)
+/Q-Do/.env
+/Q-Do/.env.local
+/Q-Do/build/

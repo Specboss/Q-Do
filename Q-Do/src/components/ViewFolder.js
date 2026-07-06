@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import { Spacing,Text,Button,Div} from '@vkontakte/vkui';
 import bridge from "@vkontakte/vk-bridge";
 import Task from "./Task"
-import axios from "axios";
+import api from "../api";
 import {Icon20ListPlusOutline} from "@vkontakte/icons";
 import ViewTask from "./ViewTask";
 import FolderTask from "./FolderTask";
@@ -27,7 +27,7 @@ const ViewFolder = ({folder, setFolder ,setBack, back}) => {
 
     useEffect(() => {
         async function getTasks() {
-            const tasks = await axios.get(`https://qretex.site/folders/${folder.id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}})
+            const tasks = await api.get(`/folders/${folder.id}`)
             if (tasks.data.tasks.length !== 0){
                 setTasks(tasks.data.tasks)
             }else{

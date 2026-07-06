@@ -3,7 +3,7 @@ import {Icon16CheckDoubleOutline,Icon20DeleteOutline,Icon20ArrowUturnLeftOutline
 import React from "react";
 import {useState} from "react";
 import classes from "../style/editTask.module.css";
-import axios from "axios";
+import api from "../api";
 import Modal from "./Modal";
 import DeletConfirmationModal from "./DeletConfirmationModal";
 
@@ -22,7 +22,7 @@ const EditTask = ({task, setEdit, setTask, setBack, back}) => {
     async function deleteTask(){
         if (loading) return
         loading = true
-        await axios.delete(`https://qretex.site/tasks/${task.id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}});
+        await api.delete(`/tasks/${task.id}`);
         setModal(false)
         const tabs = await document.getElementById("tabs")
         document.body.style.overflow = 'auto'
@@ -36,10 +36,10 @@ const EditTask = ({task, setEdit, setTask, setBack, back}) => {
         if (loading) return
         loading = true
         console.log(task)
-        await axios.patch(`https://qretex.site/tasks/${task.id}`,{
+        await api.patch(`/tasks/${task.id}`,{
             title: inputText,
             text: textareaText
-        },{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}});
+        });
         setTask({
             ...task,
             title:inputText,

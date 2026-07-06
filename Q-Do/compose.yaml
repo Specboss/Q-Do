@@ -3,6 +3,10 @@ services:
     build:
       context: .
       dockerfile: Containerfile
+      args:
+        # URL бэкенда, вшивается в статику при сборке.
+        # Меняется через переменную окружения: REACT_APP_API_URL=... podman compose build
+        REACT_APP_API_URL: ${REACT_APP_API_URL:-https://qretex.site}
     image: q-do:latest
     container_name: q-do
     restart: unless-stopped

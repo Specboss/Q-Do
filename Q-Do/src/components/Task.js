@@ -2,14 +2,14 @@ import { Text,Div,Button,Spacing} from "@vkontakte/vkui";
 import React,{useRef, useState} from 'react';
 import classes from "../style/task.module.css"
 import {Icon20ArrowRightOutline, Icon20CheckCircleOutline} from "@vkontakte/icons";
-import axios from "axios";
+import api from "../api";
 const Task = ({task,setTask}) => {
   let loading = false
   const [completed,setCompleted] = useState(task.completed)
   async function completeTask(){
     if (loading) return
     loading = true
-    const taskComplete = await axios.patch(`https://qretex.site/tasks/complete/${task.id}`,{},{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}});
+    const taskComplete = await api.patch(`/tasks/complete/${task.id}`,{});
     setCompleted(taskComplete.data.completed)
     loading = false
   }

@@ -2,14 +2,14 @@ import { Text,Div,Button,Spacing} from "@vkontakte/vkui";
 import React,{useRef, useState} from 'react';
 import classes from "../style/task.module.css"
 import {Icon20ListPlusOutline} from "@vkontakte/icons";
-import axios from "axios";
+import api from "../api";
 const AddFolderTask = ({task, folderId,setAddTask}) => {
     let loading = false
 
     async function addTaskToFolder(){
         if (loading) return
         loading = true
-        await axios.get(`https://qretex.site/folders/${folderId}/task/${task.id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}});
+        await api.get(`/folders/${folderId}/task/${task.id}`);
         setAddTask(false)
         loading = false
     }

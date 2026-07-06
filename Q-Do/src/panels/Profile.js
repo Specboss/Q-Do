@@ -12,7 +12,7 @@ import {
     Image,
 } from '@vkontakte/vkui';
 import bridge from "@vkontakte/vk-bridge";
-import axios from "axios";
+import api from "../api";
 
 const Profile = ({ id }) =>{
     const [user, setUser] = useState(null);
@@ -22,7 +22,7 @@ const Profile = ({ id }) =>{
     useEffect(() => {
         async function fetchData() {
             const user = await bridge.send('VKWebAppGetUserInfo');
-            const userStats = await axios.get("https://qretex.site/users",{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}})
+            const userStats = await api.get("/users")
             setUserStats(userStats.data)
             setUser(user);
             setPopout(null)

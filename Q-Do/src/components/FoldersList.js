@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
+import api from "../api";
 import ViewTask from "./ViewTask";
 import {Button, Div, Spacing, Text} from "@vkontakte/vkui";
 import {Icon20FolderSimplePlusOutline} from "@vkontakte/icons";
@@ -17,7 +17,7 @@ const FolderList = ({setSelected, setBack, back}) => {
 
     useEffect(() => {
         async function getFolders() {
-            const folders = await axios.get("https://qretex.site/folders",{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}})
+            const folders = await api.get("/folders")
             if (folders.data.length !== 0) {
                 setFolders(folders.data)
             }else {

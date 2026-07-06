@@ -3,7 +3,7 @@ import {Icon16CheckDoubleOutline} from "@vkontakte/icons";
 import React from "react";
 import {useState} from "react";
 import classes from "../style/editTask.module.css";
-import axios from "axios";
+import api from "../api";
 
 const CreateTask = ({setSelected}) => {
     const [inputText,setInputText] = useState('')
@@ -13,10 +13,10 @@ const CreateTask = ({setSelected}) => {
     async function createTask(){
         if (loading) return
         loading = true
-        await axios.post("https://qretex.site/tasks",{
+        await api.post("/tasks",{
             title: inputText,
             text: textareaText
-        },{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}});
+        });
         setSelected('list')
         loading = false
     }

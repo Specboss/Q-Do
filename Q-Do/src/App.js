@@ -6,7 +6,7 @@ import classes from "./style/tabsBottom.module.css"
 
 import Home from './panels/Home';
 import {Icon16FolderOutline, Icon16ListBulletOutline,Icon20UserCircleOutline} from "@vkontakte/icons";
-import axios from "axios";
+import api from "./api";
 import Folders from "./panels/Folders";
 import Profile from "./panels/Profile";
 import Modal from "./components/Modal";
@@ -16,7 +16,7 @@ const App = () => {
     const [popout, setPopout] = useState(<ScreenSpinner size='large'/>);
     useEffect(() => {
         async function fetchData() {
-            const token = await axios.post("https://qretex.site/auth/login",{
+            const token = await api.post("/auth/login",{
                 url: window.location.href
             });
             localStorage.setItem("token",token.data.access_token);

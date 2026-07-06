@@ -7,7 +7,7 @@ import {
     Icon20DeleteOutline, Icon20More,
     Icon20WriteOutline
 } from "@vkontakte/icons";
-import axios from "axios";
+import api from "../api";
 import Modal from "./Modal";
 import ModalForFolder from "./ModalForFolder";
 import DeletConfirmationModal from "./DeletConfirmationModal";
@@ -28,7 +28,7 @@ const Folder = ({folder,setFolder}) => {
     async function deleteFolder(){
         if (loading) return
         loading = true
-        await axios.delete(`https://qretex.site/folders/${folder.id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}});
+        await api.delete(`/folders/${folder.id}`);
         setModal(false)
         const tabs = await document.getElementById("tabs")
         document.body.style.overflow = 'auto'
@@ -40,9 +40,9 @@ const Folder = ({folder,setFolder}) => {
     async function updateTask(){
         if (loading) return
         loading = true
-        await axios.patch(`https://qretex.site/folders/${folder.id}`,{
+        await api.patch(`/folders/${folder.id}`,{
             name: inputText
-        },{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}});
+        });
         setFolder(false)
         setEdit(false)
         setModal(false)

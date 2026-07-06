@@ -3,7 +3,7 @@ import React,{useRef, useState} from 'react';
 import classes from "../style/viewTask.module.css"
 import {Icon20WriteOutline, Icon20DeleteOutline} from "@vkontakte/icons";
 import EditTask from "./EditTask";
-import axios from "axios";
+import api from "../api";
 import Modal from "./Modal";
 import DeletConfirmationModal from "./DeletConfirmationModal";
 import ModalForFolder from "./ModalForFolder";
@@ -20,7 +20,7 @@ const ViewTask = ({task, setTask,setBack, back}) => {
     async function deleteTask(){
         if (loading) return
         loading = true
-        await axios.delete(`https://qretex.site/tasks/${task.id}`,{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}});
+        await api.delete(`/tasks/${task.id}`);
         setModal(false)
         const tabs = await document.getElementById("tabs")
         document.body.style.overflow = 'auto'

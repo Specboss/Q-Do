@@ -3,7 +3,7 @@ import {Icon16CheckDoubleOutline} from "@vkontakte/icons";
 import React from "react";
 import classes from "../style/createFolder.module.css"
 import {useState} from "react";
-import axios from "axios";
+import api from "../api";
 
 const CreateFolder = ({setSelected}) => {
     const [inputText,setInputText] = useState('')
@@ -12,9 +12,9 @@ const CreateFolder = ({setSelected}) => {
     async function createTask(){
         if (loading) return
         loading = true
-        await axios.post("https://qretex.site/folders",{
+        await api.post("/folders",{
             name: inputText
-        },{headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}});
+        });
         setSelected("list")
         loading = false
     }
