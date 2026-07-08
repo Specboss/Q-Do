@@ -1,5 +1,5 @@
 .editTask{
-    width: min(88vw, 440px);
+    width: var(--content);
     margin: 0 auto;
     min-height: 80vh;
     display: flex;

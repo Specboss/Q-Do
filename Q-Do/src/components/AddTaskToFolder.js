@@ -38,7 +38,7 @@ const AddTaskToFolder = ({folderId, setAddTask, setBack, back}) => {
                         <AddFolderTask key={task.id} task={task} folderId={folderId} setAddTask={setAddTask} />
 
                     ))}
-                    <Div style={{height:"11vh"}}/></>
+                    <Div className="qdo-spacer"/></>
 
                 :
                 <Div className="qdo-empty">

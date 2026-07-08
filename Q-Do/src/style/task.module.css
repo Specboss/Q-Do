@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    width: min(88vw, 440px);
-    margin: 0 auto 14px;
+    width: var(--content);
+    margin: 0 auto var(--gap);
     padding: 16px 18px;
     background: var(--surface);
     border: 1px solid var(--border);

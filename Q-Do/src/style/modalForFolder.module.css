@@ -1,6 +1,6 @@
 .menu {
     position: relative;
-    width: min(92vw, 440px);
+    width: var(--content);
     background: var(--surface-solid);
     border: 1px solid var(--border);
     border-radius: 26px;

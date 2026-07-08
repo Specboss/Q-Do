@@ -57,7 +57,7 @@ const ViewFolder = ({folder, setFolder ,setBack, back}) => {
                         <FolderTask key={task.id} task={task}  setTask={setTask} />
 
                     ))}
-                            <Div style={{height:"11vh"}}/>
+                            <Div className="qdo-spacer"/>
                 </>
 
                 :

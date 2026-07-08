@@ -38,6 +38,11 @@
     --radius-xs:   12px;
     --radius-pill: 999px;
 
+    /* --- layout rhythm (единая ширина контента и шаг отступов) --- */
+    --content: min(90vw, 448px);
+    --gap: 12px;
+    --tabbar-clear: calc(env(safe-area-inset-bottom, 0px) + 96px);
+
     /* --- elevation --- */
     --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.45);
     --shadow-glow: 0 12px 34px rgba(38, 136, 235, 0.38);
@@ -120,8 +125,8 @@ body {
 .vkuiTabs {
     background: transparent !important;
     box-shadow: none !important;
-    margin: 6px auto 10px;
-    width: 88vw;
+    margin: 10px auto 14px;
+    width: var(--content);
     padding: 5px;
     border-radius: var(--radius-pill);
     background: var(--surface) !important;
@@ -238,6 +243,9 @@ body {
     max-width: 260px;
 }
 .qdo-empty__btn { margin-top: 26px; }
+
+/* Единый нижний отступ списков — чтобы последний элемент не уходил под таб-бар */
+.qdo-spacer { height: var(--tabbar-clear); flex-shrink: 0; }
 
 /* --- shared helpers reused across CSS modules --- */
 .qdo-fadein { animation: qdoFade .35s ease both; }

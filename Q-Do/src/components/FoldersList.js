@@ -34,7 +34,7 @@ const FolderList = ({setSelected, setBack, back}) => {
                         <Folder key={folder.id} folder={folder}  setFolder={setFolder} />
 
                     ))}
-                    <Div style={{height:"11vh"}}/>
+                    <Div className="qdo-spacer"/>
                 </>
 
                 :

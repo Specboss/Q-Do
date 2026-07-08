@@ -12,7 +12,7 @@
 
 .tabsBottomVisible{
     display: flex;
-    width: min(92vw, 440px);
+    width: var(--content);
     padding: 7px;
     gap: 6px;
     background: var(--surface);

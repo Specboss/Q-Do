@@ -1,7 +1,7 @@
 .folder{
     position: relative;
-    width: min(88vw, 440px);
-    margin: 0 auto 14px;
+    width: var(--content);
+    margin: 0 auto var(--gap);
 }
 .folder:first-of-type{ margin-top: 4px; }
 
