@@ -61,18 +61,15 @@ const ViewFolder = ({folder, setFolder ,setBack, back}) => {
                 </>
 
                 :
-                <Div  className={classes.noTask}>
-                    <Icon20ListPlusOutline width={58} height={46} color={"#2688EB"}/>
-
-                    <Spacing size={10} />
-
-                    <Text className={classes.text}>У Вас нет заметок</Text>
-                    <Spacing size={32} />
-                    <Button size={'l'} onClick={() => {
+                <Div className="qdo-empty">
+                    <div className="qdo-empty__icon">
+                        <Icon20ListPlusOutline width={42} height={42} color={"#5AC8FA"}/>
+                    </div>
+                    <Text className="qdo-empty__title">В папке пусто</Text>
+                    <Text className="qdo-empty__sub">Добавьте сюда существующие заметки</Text>
+                    <Button size={'l'} className="qdo-empty__btn" onClick={() => {
                         setAddTask(true);
-                    }}>
-                        <Text weight={'1'} className={classes.buttonText}>Добавить</Text>
-                    </Button>
+                    }}>Добавить заметку</Button>
                 </Div>
 
             }

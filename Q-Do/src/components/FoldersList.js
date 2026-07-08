@@ -38,32 +38,15 @@ const FolderList = ({setSelected, setBack, back}) => {
                 </>
 
                 :
-                <Div  style={{
-                    height: "80vh",
-                    display:"flex",
-                    alignItems: "center",
-                    flexDirection: "column",
-                    justifyContent: "center"
-
-                }}>
-
-                    <Icon20FolderSimplePlusOutline width={58} height={46} color={"#2688EB"}/>
-                    <Spacing size={10} />
-
-                    <Text  style={{
-                        fontSize:"20px",
-                        weight:"500"
-                    }}>У Вас нет папок</Text>
-                    <Spacing size={32} />
-                    <Button size={'l'} onClick={() => {
+                <Div className="qdo-empty">
+                    <div className="qdo-empty__icon">
+                        <Icon20FolderSimplePlusOutline width={42} height={42} color={"#5AC8FA"}/>
+                    </div>
+                    <Text className="qdo-empty__title">Папок пока нет</Text>
+                    <Text className="qdo-empty__sub">Сгруппируйте заметки — создайте первую папку</Text>
+                    <Button size={'l'} className="qdo-empty__btn" onClick={() => {
                         setSelected('create');
-                    }}>
-                        <Text weight={'1'}   style={{
-                            fontSize:"14px",
-
-
-                        }}>Добавить</Text>
-                    </Button>
+                    }}>Создать папку</Button>
                 </Div>
             }
         </>

@@ -41,22 +41,12 @@ const AddTaskToFolder = ({folderId, setAddTask, setBack, back}) => {
                     <Div style={{height:"11vh"}}/></>
 
                 :
-                <Div  style={{
-                    height: "80vh",
-                    display:"flex",
-                    alignItems: "center",
-                    flexDirection: "column",
-                    justifyContent: "center"
-
-                }}>
-
-                    <Icon20ListPlusOutline width={58} height={46} color={"#2688EB"}/>
-                    <Spacing size={10} />
-
-                    <Text  style={{
-                        fontSize:"20px",
-                        weight:"500"
-                    }}>У Вас нет заметок</Text>
+                <Div className="qdo-empty">
+                    <div className="qdo-empty__icon">
+                        <Icon20ListPlusOutline width={42} height={42} color={"#5AC8FA"}/>
+                    </div>
+                    <Text className="qdo-empty__title">Нет заметок для добавления</Text>
+                    <Text className="qdo-empty__sub">Сначала создайте заметку во вкладке «Заметки»</Text>
                 </Div>
             }
         </>

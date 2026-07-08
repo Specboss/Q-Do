@@ -1,57 +1,89 @@
 .folder{
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: min(88vw, 440px);
+    margin: 0 auto 14px;
 }
-.folderName{
-    text-align: center;
-    width: 80vw;
-    font-size: 20px;
-    color: #E1E3E6;
+.folder:first-of-type{ margin-top: 4px; }
 
+.folderImg{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+    min-height: 64px;
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    cursor: pointer;
+    animation: qdoFade .35s ease both;
+    transition: transform .12s ease, border-color .2s ease;
+}
+.folderImg:active{ transform: scale(.99); }
+
+.folderIcon{
+    flex-shrink: 0;
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-grad);
+    box-shadow: var(--shadow-glow);
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.folderName{
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+    padding-right: 34px;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .taskTitle{
-    font-size: 20px;
-    color: #E1E3E6;
-    font-weight: bold;
-
-}
-.folderImg{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-image: url("../img/folder.svg");
-    background-color: white;
-    background-position: 50% 50%;
-    border-radius: 15px;
-    padding: 59px 4vw;
+    font-size: 17px;
+    color: var(--text);
+    font-weight: 700;
 }
 
-.folderButtons{
-    display: flex;
-    justify-content: space-between;
-    width: 88vw;
-    padding: 0;
-    margin-top: 1vh;
-
+.folderInput{
+    flex: 1;
+    min-width: 0;
 }
 
 .folderButton{
-    height: 35px;
+    flex-shrink: 0;
+    height: 44px;
     padding: 0;
-    margin-top: 20px;
-
-
-}
-.folderInput{
-    width: 80vw;
 }
 
 .folderModal{
-    position:absolute;
-    left: 82%;
-    top: 20px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--text-2);
+    z-index: 2;
+    transition: background .18s ease;
 }
+.folderModal:active{ background: var(--surface-3); }

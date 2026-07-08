@@ -62,7 +62,7 @@ const Folder = ({folder,setFolder}) => {
         <>
         {modal && <Modal setModal={setModal}>{confirmDeleteModal? <DeletConfirmationModal deleteFunc={deleteFolder} />: edit ? null:<ModalForFolder setEdit={setEdit} setConfirmDeleteModal={setConfirmDeleteModal}/>}</Modal>}
         <Div className={classes.folder} style={{zIndex: modal ? "101" : "auto"}} >
-            {modal ? null: <Div className={classes.folderModal} onClick={showModal}><Icon20More/></Div>}
+            {modal ? null: <Div className={classes.folderModal} onClick={showModal}><Icon20More color={"#A2A9B4"} width={22} height={22}/></Div>}
             <Div className={classes.folderImg} onClick={()=> {if (!edit && !modal)setFolder(folder)}}>
 
                 {edit?<><Input
@@ -76,7 +76,10 @@ const Folder = ({folder,setFolder}) => {
                 />
                     <Button className={classes.folderButton} onClick={updateTask}  mode={"secondary"} disabled={!inputText}><Icon16CheckDoubleOutline  width={25} height={25} color={(inputText) ? "#26EB51": "#ACACAC"}/></Button>
                     </>
-                    :<Text className={classes.folderName}>{folder.name}</Text>}
+                    :<>
+                        <div className={classes.folderIcon}>{((folder.name || "П").trim().charAt(0) || "П").toUpperCase()}</div>
+                        <Text className={classes.folderName}>{folder.name}</Text>
+                    </>}
             </Div>
 
         </Div>

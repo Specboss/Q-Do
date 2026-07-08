@@ -31,7 +31,7 @@ const App = () => {
     };
     console.log(window.location.href)
     return (
-        <ConfigProvider>
+        <ConfigProvider appearance="dark">
             <AdaptivityProvider>
                 <AppRoot>
 
@@ -45,14 +45,17 @@ const App = () => {
 
                     <Div id={'tabs'} className={classes.tabsBottom} >
                     <Div className={classes.tabsBottomVisible}>
-                        <Div  onClick={go} data-to="home" >
-                            <Icon16ListBulletOutline width={30} height={30} color={activePanel ==="home" ? "#F2F2F2": "#545454"}/>
+                        <Div onClick={go} data-to="home" className={`${classes.tab} ${activePanel === "home" ? classes.tabActive : ""}`}>
+                            <Icon16ListBulletOutline width={24} height={24} color={activePanel === "home" ? "#FFFFFF" : "#7B818C"}/>
+                            <span className={classes.tabLabel}>Заметки</span>
                         </Div>
-                        <Div  onClick={go} data-to="folders">
-                            <Icon16FolderOutline width={30} height={30} color={activePanel ==="folders" ? "#F2F2F2": "#545454"}/>
+                        <Div onClick={go} data-to="folders" className={`${classes.tab} ${activePanel === "folders" ? classes.tabActive : ""}`}>
+                            <Icon16FolderOutline width={24} height={24} color={activePanel === "folders" ? "#FFFFFF" : "#7B818C"}/>
+                            <span className={classes.tabLabel}>Папки</span>
                         </Div>
-                        <Div  onClick={go} data-to="profile">
-                            <Icon20UserCircleOutline width={30} height={30} color={activePanel ==="profile" ? "#F2F2F2": "#545454"}/>
+                        <Div onClick={go} data-to="profile" className={`${classes.tab} ${activePanel === "profile" ? classes.tabActive : ""}`}>
+                            <Icon20UserCircleOutline width={24} height={24} color={activePanel === "profile" ? "#FFFFFF" : "#7B818C"}/>
+                            <span className={classes.tabLabel}>Профиль</span>
                         </Div>
                     </Div>
                     </Div>

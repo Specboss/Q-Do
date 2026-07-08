@@ -1,22 +1,26 @@
 .createFolder{
-    height: 80vh;
+    width: min(88vw, 440px);
+    margin: 0 auto;
+    min-height: 80vh;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     flex-direction: column;
-    padding-block:0;
+    padding-top: 12px;
 }
 
 .folderImg{
-    background-image: url("../img/folder.svg");
-    background-color: white;
-    background-position: 50% 50%;
-    border-radius: 15px;
-    padding: 5vh 4vw;
+    display: flex;
+    width: 100%;
+    padding: 0;
+    background: none;
+    border-radius: 0;
 }
+
 .folderInput{
-    width: 80vw;
+    width: 100%;
 }
 
 .button{
-    height: 35px;
+    min-height: 50px;
+    margin-top: 6px;
 }

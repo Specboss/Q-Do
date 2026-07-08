@@ -1,59 +1,81 @@
 .profile {
     display: flex;
     flex-direction: column;
-    width: 88vw;
+    width: min(88vw, 440px);
     align-items: center;
-    height: 85vh;
+    min-height: 80vh;
     margin: 0 auto;
+    padding-top: 10px;
 }
 
-.titletest {
-    padding: 14px 0;
-
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20px;
-    color: rgba(118, 120, 122, 1);
+.avatarWrap {
+    margin-top: 22px;
+    padding: 3px;
+    border-radius: 50%;
+    background: var(--accent-grad);
+    box-shadow: var(--shadow-glow);
+    animation: qdoFade .4s ease both;
 }
 
 .profile__name {
-    margin-top: 12px;
-
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20px;
+    margin-top: 16px;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 26px;
+    color: var(--text);
 }
 
 .profile__username {
     margin-top: 4px;
-    margin-bottom: 19px;
-    color: rgba(150, 154, 159, 1);
+    margin-bottom: 4px;
+    font-size: 14px;
+    color: var(--text-2);
 }
+
 .profile__stats {
-    height: 126px;
-    background: rgba(45, 45, 46, 1);
-    width: 80%;
-    border-radius: 12px;
-    margin-top: 15px;
-    padding: 15px 19px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
+    margin-top: 24px;
+}
 
-    font-family: Roboto;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 24px;
-    color: rgba(105, 105, 105, 1);
-
+.stat {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-card);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    animation: qdoFade .4s ease both;
+}
+
+.statNum {
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1;
+    background: var(--accent-grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.statLabel {
+    margin-top: 7px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-2);
+    text-align: center;
 }
 
 .profile__signature {
-    margin-top: 40vh;
-}
-@media screen and (max-width: 550px) {
-
-    .profile__signature {
-        margin-top: 75px;
-    }
+    margin-top: auto;
+    padding: 24px 0 13vh;
+    font-size: 13px;
+    color: var(--text-3);
 }

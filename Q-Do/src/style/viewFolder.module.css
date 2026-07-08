@@ -1,39 +1,41 @@
-.noTask{
-    height: 80vh;
-    display:flex;
-    align-items: center;
+.topPosition{
+    display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    width: min(88vw, 440px);
+    margin: 0 auto;
+    padding-top: 6px;
+    margin-bottom: 8px;
 }
 
-.text{
-    font-size:20px;
-    font-weight:500;
+.top{
+    min-height: 44px;
+    display: flex;
+    padding: 0;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.folderText{
+    flex: 1;
+    min-width: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.button{
+    flex-shrink: 0;
+    height: 44px;
+    min-width: 48px;
 }
 
 .buttonText{
     font-size: 14px;
-}
-
-.top{
-    height: 35px;
-    display: flex;
-    padding: 0;
-    width: 88vw;
-    justify-content: space-between;
-    align-items: center;
-}
-.topPosition{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.button{
-    height: 35px;
-}
-
-.folderText{
-    color: #696969;
 }

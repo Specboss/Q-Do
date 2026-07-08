@@ -1,42 +1,57 @@
 .task{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
+    align-items: stretch;
+    width: min(88vw, 440px);
+    margin: 0 auto;
+    padding-top: 8px;
+    animation: qdoFade .35s ease both;
 }
+
 .taskText{
-    width: 80vw;
+    width: 100%;
     font-size: 15px;
-    color: #969A9F;
+    line-height: 1.55;
+    color: var(--text-2);
+    white-space: pre-wrap;
+    word-break: break-word;
 }
 
 .taskTitle{
-    line-height: 30px;
-    font-size: 25px;
-    color: #E1E3E6;
-    font-weight: bold;
+    line-height: 1.2;
+    font-size: 26px;
+    color: var(--text);
+    font-weight: 800;
     text-align: left;
-    width: 80vw;
-    padding: 0 20px 20px;
-
-
+    width: 100%;
+    padding: 0 2px 16px;
+    word-break: break-word;
 }
+
 .taskTextDiv{
-    min-height: 204px;
-    background-color: #2D2D2E;
-    border-radius: 15px;
-    padding: 3vw 4vw;
+    min-height: 200px;
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    padding: 18px;
+    box-sizing: border-box;
 }
 
 .taskButtons{
     display: flex;
     justify-content: space-between;
-    width: 88vw;
+    gap: 10px;
+    width: 100%;
     padding: 0;
-
+    margin-top: 14px;
 }
 
 .taskButton{
-   height: 35px;
+    flex: 1;
+    min-width: 0;
+    height: 48px;
 }

@@ -37,15 +37,25 @@ const Profile = ({ id }) =>{
             <PanelHeader >Q-Do</PanelHeader>
             <Div className={classes.profile}>
                 {popout? popout:<>
-                    <Text className={classes.titletest}>Профиль</Text>
-                    <Avatar size={96} src={user.photo_200} />
+                    <div className={classes.avatarWrap}>
+                        <Avatar size={104} src={user.photo_200} />
+                    </div>
                     <Text className={classes.profile__name}>{user.first_name} {user.last_name}</Text>
                     <Text className={classes.profile__username}>@{user.id}</Text>
 
                     <Div className={classes.profile__stats}>
-                        <Text>Ваши заметки: {userStats.tasks}</Text>
-                        <Text>Выполненные заметки: {userStats.completedTasks}</Text>
-                        <Text>Количество папок: {userStats.folder}</Text>
+                        <div className={classes.stat}>
+                            <span className={classes.statNum}>{userStats.tasks}</span>
+                            <span className={classes.statLabel}>Заметки</span>
+                        </div>
+                        <div className={classes.stat}>
+                            <span className={classes.statNum}>{userStats.completedTasks}</span>
+                            <span className={classes.statLabel}>Выполнено</span>
+                        </div>
+                        <div className={classes.stat}>
+                            <span className={classes.statNum}>{userStats.folder}</span>
+                            <span className={classes.statLabel}>Папки</span>
+                        </div>
                     </Div>
 
                     <Text className={classes.profile__signature}>with {heart} by Qretex</Text>
