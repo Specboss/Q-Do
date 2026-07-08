@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 import {
     Panel,
     PanelHeader,
-    Tabs,
-    TabsItem,
+    Button,
     PanelHeaderBack
 } from '@vkontakte/vkui';
 import FoldersList from "../components/FoldersList";
@@ -26,26 +25,13 @@ const Folders = ({ id }) =>{
                 if (back ==="viewFolder") setBack("backFolder");
                 if (back ==="viewTask") setBack("backView");
                 if (back ==="editTask") setBack("backEdit");
-                if (back ==="addTaskToFolder") setBack("backAddTaskToFolder")}} /> : null} >Q-Do</PanelHeader>
-            <Tabs>
-                <TabsItem
-                    selected={selected==="list"}
-                    onClick={() => {
-                        setSelected('list');
-                    }}
-                >
-                    Папки
-                </TabsItem>
-                <TabsItem
-                    selected={selected==="create"}
-                    onClick={() => {
-                        setSelected('create');
-                        setBack(null)
-                    }}
-                >
-                    Создать
-                </TabsItem>
-            </Tabs>
+                if (back ==="addTaskToFolder") setBack("backAddTaskToFolder")}} /> : null} >Note2B</PanelHeader>
+            <div className="qdo-head">
+                <h2 className="qdo-head__title">Папки</h2>
+                {selected === 'list'
+                    ? <Button size="s" onClick={() => { setSelected('create'); setBack(null); }}>Создать</Button>
+                    : <Button size="s" mode="secondary" onClick={() => setSelected('list')}>Отмена</Button>}
+            </div>
 
             {selected === 'list' &&(
                 <FoldersList setSelected={setSelected} setBack={setBack} back={back} />

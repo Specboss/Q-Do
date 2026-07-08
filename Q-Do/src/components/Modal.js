@@ -15,7 +15,7 @@ const Modal = ({setModal,children}) => {
     tabs.style.display = 'none'
     document.body.style.overflow = 'hidden'
     return(
- <Div className={classes.modal} id={'modal'} style={{top:window.pageYOffset}} onClick={closeModal}>{children}</Div>)
+ <Div className={classes.modal} id={'modal'} onClick={closeModal}>{children}</Div>)
 }
 
 export default Modal;

@@ -3,7 +3,8 @@
     flex-direction: column;
     width: var(--content);
     align-items: center;
-    min-height: 80vh;
+    min-height: calc(100vh - 96px);
+    min-height: calc(100dvh - 96px);
     margin: 0 auto;
     padding-top: 10px;
 }
@@ -75,7 +76,8 @@
 
 .profile__signature {
     margin-top: auto;
-    padding: 24px 0 13vh;
+    padding: 16px 0 0;
+    margin-bottom: calc(env(safe-area-inset-bottom, 0px) + 84px);
     font-size: 13px;
     color: var(--text-3);
 }

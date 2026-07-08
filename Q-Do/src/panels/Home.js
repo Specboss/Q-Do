@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 import {
 	Panel,
 	PanelHeader,
-	Tabs,
-	TabsItem,
+	Button,
 	PanelHeaderBack
 } from '@vkontakte/vkui';
 import TasksList from "../components/TasksList";
@@ -18,29 +17,13 @@ const Home = ({ id, popout }) =>{
 	return(
 
 	<Panel id={id}>
-		<PanelHeader before={back ? <PanelHeaderBack onClick={()=>{back ==="viewTask"? setBack("backView"): setBack("backEdit")}} /> : null} >Q-Do</PanelHeader>
-		<Tabs>
-			<TabsItem
-				selected={selected==="list"}
-				onClick={() => {
-					setSelected('list');
-				}}
-
-			>
-				Заметки
-			</TabsItem>
-			<TabsItem
-				selected={selected==="create"}
-				onClick={() => {
-					setSelected('create')
-					setBack(null);
-				}}
-
-
-			>
-				Создать
-			</TabsItem>
-		</Tabs>
+		<PanelHeader before={back ? <PanelHeaderBack onClick={()=>{back ==="viewTask"? setBack("backView"): setBack("backEdit")}} /> : null} >Note2B</PanelHeader>
+		<div className="qdo-head">
+			<h2 className="qdo-head__title">Заметки</h2>
+			{selected === 'list'
+				? <Button size="s" onClick={() => { setSelected('create'); setBack(null); }}>Создать</Button>
+				: <Button size="s" mode="secondary" onClick={() => setSelected('list')}>Отмена</Button>}
+		</div>
 
 		{selected === 'list' &&(
 			<TasksList setSelected={setSelected} popout={popout} setBack={setBack} back={back}/>

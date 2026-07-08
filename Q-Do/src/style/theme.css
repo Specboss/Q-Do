@@ -247,6 +247,26 @@ body {
 /* Единый нижний отступ списков — чтобы последний элемент не уходил под таб-бар */
 .qdo-spacer { height: var(--tabbar-clear); flex-shrink: 0; }
 
+/* =========================================================================
+   Заголовок раздела: название слева, кнопка «Создать» справа, без подложки.
+   Ширина = --content, поэтому края совпадают с карточками и нижним меню.
+   ========================================================================= */
+.qdo-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: var(--content);
+    margin: 6px auto 14px;
+}
+.qdo-head__title {
+    margin: 0;
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: .2px;
+    color: var(--text);
+}
+
 /* --- shared helpers reused across CSS modules --- */
 .qdo-fadein { animation: qdoFade .35s ease both; }
 @keyframes qdoFade {

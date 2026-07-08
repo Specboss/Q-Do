@@ -34,7 +34,7 @@ const Profile = ({ id }) =>{
     return(
 
         <Panel id={id}>
-            <PanelHeader >Q-Do</PanelHeader>
+            <PanelHeader >Note2B</PanelHeader>
             <Div className={classes.profile}>
                 {popout? popout:<>
                     <div className={classes.avatarWrap}>
